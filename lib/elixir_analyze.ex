@@ -1,0 +1,2 @@
+defmodule ElixirAnalyze do
+end
