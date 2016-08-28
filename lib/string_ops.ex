@@ -10,16 +10,24 @@ defmodule StringOps do
 
 
   def fixWhitespace(s),  do: String.replace(s, "\n", " ")
+
+
   def fixHyphenation(s), do: String.replace(s, "- ", "")
 
 
-  def splitIntoSentences(s) do
-    Enum.map String.split(s, ". "), &ensure_ends_with_period/1
+  def splitIntoSentences(a_string) do
+    a_string
+      |> String.split(". ")
+      |> Enum.map(&ensure_ends_with_period/1)
   end
 
 
   def ensure_ends_with_period(s) when is_bitstring(s) do
-    if String.ends_with?(s, "."), do: s, else: s <> "."
+    if String.ends_with?(s, ".") do
+      s
+    else
+      s <> "."
+    end
   end
 
 end
