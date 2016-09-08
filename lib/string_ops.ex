@@ -2,7 +2,8 @@ import String
 
 defmodule StringOps do
 
-  def clean_up(title) do
+  @spec clean_up(String.t) :: String.t
+  def   clean_up(title) do
     title
       |> fixWhitespace
       |> fixHyphenation
@@ -10,17 +11,21 @@ defmodule StringOps do
       |> List.first
   end
 
-  def fixWhitespace(s),  do: replace(s, "\n", " ")
+  @spec fixWhitespace(String.t) :: String.t
+  def   fixWhitespace(s),  do: replace(s, "\n", " ")
 
-  def fixHyphenation(s), do: replace(s, "- ", "")
+  @spec fixHyphenation(String.t) :: String.t
+  def   fixHyphenation(s), do: replace(s, "- ", "")
 
-  def splitIntoSentences(a_string) do
+  @spec splitIntoSentences(String.t) :: [String.t]
+  def   splitIntoSentences(a_string) do
     a_string
       |> split(". ")
       |> Enum.map(&ensure_ends_with_period/1)
   end
 
-  def ensure_ends_with_period(sentence) do
+  @spec ensure_ends_with_period(String.t) :: String.t
+  def   ensure_ends_with_period(sentence) do
     sentence <> if ends_with?(sentence, "."), do: "", else: "."
   end
 
