@@ -28,5 +28,4 @@ defmodule StringOps do
   def ensure_ends_with_period(sentence) do
     sentence <> if ends_with?(sentence, "."), do: "", else: "."
   end
-
 end
